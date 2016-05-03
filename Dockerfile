@@ -24,8 +24,8 @@ RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz \
 	&& rm golang.tar.gz
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
-ADD templates/entrypoint.sh /etc/init.d/entrypoint.sh
-RUN chmod +x /etc/init.d/entrypoint.sh
+ADD templates/nls-entrypoint.sh /etc/init.d/nls-entrypoint.sh
+RUN chmod +x /etc/init.d/nls-entrypoint.sh
 
 WORKDIR $GOPATH
 
@@ -33,6 +33,6 @@ EXPOSE 80
 EXPOSE 443
 EXPOSE $POSTGRES_PORT
 
-# Setup the entrypoint
+# Setup the nls-entrypoint
 ENTRYPOINT ["/bin/bash", "-l", "-c"]
-CMD ["/etc/init.d/entrypoint.sh"]
+CMD ["/etc/init.d/nls-entrypoint.sh"]
