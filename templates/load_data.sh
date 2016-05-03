@@ -37,6 +37,10 @@ sed -e '$a\' -i $DB_DUMP_LOCATION
 
 # sleep 10
 # import sql_dump
-exec gosu postgres $POSTGRES_MAIN_USER --single $POSTGRES_DB < $DB_DUMP_LOCATION > /dev/null 2>&1
+# exec gosu postgres $POSTGRES_MAIN_USER --single $POSTGRES_DB < $DB_DUMP_LOCATION
+
+gosu postgres psql -h $POSTGRES_IP -p $POSTGRES_PORT -U $POSTGRES_DB -d $POSTGRES_DB -a -f $DB_DUMP_LOCATION
+
+#> /dev/null 2>&1
 
 echo -e "*** DATABASE LOADED! ***"

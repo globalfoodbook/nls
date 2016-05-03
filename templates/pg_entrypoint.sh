@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 if [ "${1:0:1}" = '-' ]; then
 	set -- postgres "$@"
