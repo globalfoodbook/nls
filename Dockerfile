@@ -6,6 +6,10 @@ ENV GOLANG_VERSION 1.6.2
 ENV GOLANG_DOWNLOAD_URL https://golang.org/dl/go$GOLANG_VERSION.linux-amd64.tar.gz
 ENV GOLANG_DOWNLOAD_SHA256 e40c36ae71756198478624ed1bb4ce17597b3c19d243f3f0899bb5740d56212a
 ENV GOPATH /go
+
+ENV PROJECT_NAME nutrition_service
+ENV PROJECT_DIR /go/src/$PROJECT_NAME
+ENV PORT 80
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 RUN apt-get update -y
@@ -29,8 +33,7 @@ RUN chmod +x /etc/init.d/nls-entrypoint.sh
 
 WORKDIR $GOPATH
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE $PORT
 EXPOSE $POSTGRES_PORT
 
 # Setup the nls-entrypoint
