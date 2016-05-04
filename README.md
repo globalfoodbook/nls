@@ -16,13 +16,13 @@ This will run on a default port of 80.
 To change the PORT for this run the following command:
 
 ```bash
-$ docker run --name=nls --detach=true --publish=80:80 --volume=/path/to/nuts-api-code/:/your/path/to/nuts-api-location nls
+$ docker run --name=nls --env POSTGRES_PASSWORD=${POSTGRES_PASSWORD} --volume=/gfb/nls-src:/go/src/nutrition_service --env NUT_PG_DSN="postgres://ikennaokpala:${POSTGRES_PASSWORD}@${POSTGRES_IP}/nutrition_development?sslmode=disable" --publish=80:80 -d nls
 ```
 
 To run the server and expose it on port 9292 of the host machine, run the following command:
 
 ```bash
-$ docker run --name=nls --detach=true --publish=80:80 globalfoodbook/nls
+$ docker run --name=nls --detach=true --publish=80:80  --volume=/gfb/nls-src:/go/src/nutrition_service globalfoodbook/nls
 ```
 
 # NB:
