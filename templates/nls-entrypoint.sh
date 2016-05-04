@@ -14,9 +14,9 @@ if [ -d "$PROJECT_DIR" ]; then
   cd $PROJECT_DIR && go get github.com/tools/godep && godep restore && go install
 
   echo -e "**** Start nutrition facts label service api ***"
-  /go/bin/$PROJECT_NAME
+  /go/bin/$PROJECT_NAME &
   echo -e "**** Start and loading data to postgres db ***"
   # Reusing entrypoint from nls-pg
-  /etc/init.d/entrypoint.sh &
+  /etc/init.d/entrypoint.sh
 
 fi
