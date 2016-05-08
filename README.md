@@ -56,4 +56,4 @@ DOCKER_HOST_IP=`awk 'NR==1 {print $1}' /etc/hosts` # from inside a docker contai
 
 #Contributors
 
-* [Ikenna n. Okpala](http://ikennaokpala.com)
+* [Ikenna N. Okpala](http://ikennaokpala.com)
