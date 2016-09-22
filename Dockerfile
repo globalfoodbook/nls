@@ -1,6 +1,17 @@
 FROM globalfoodbook/nls-pg:latest
 
 MAINTAINER Ikenna N. Okpala <me@ikennaokpala.com>
+# i.e
+# BUILD_DATE `date -u +"%Y-%m-%dT%H:%M:%SZ"`
+# VCS_REF `git rev-parse --short HEAD`
+LABEL org.label-schema.build-date=$BUILD_DATE \
+       org.label-schema.docker.dockerfile="/Dockerfile" \
+       org.label-schema.license="GNU GENERAL PUBLIC LICENSE" \
+       org.label-schema.name="NLS Container (gfb)" \
+       org.label-schema.url="http://globalfoodbook.com/" \
+       org.label-schema.vcs-ref=$VCS_REF \
+       org.label-schema.vcs-type="Git" \
+       org.label-schema.vcs-url="https://github.com/globalfoodbook/nls.git"
 
 ENV GOLANG_VERSION 1.6.2
 ENV GOLANG_DOWNLOAD_URL https://golang.org/dl/go$GOLANG_VERSION.linux-amd64.tar.gz
